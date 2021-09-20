@@ -71,6 +71,14 @@ fun main() {
         "Июнь" to listOf(200,100,300,300)
     )
     printInfo(data)
+    
+    
+    // extension example
+    val list = listOf(5, 10, 15, 20)
+    myWith(list) {
+        println(sum())
+        println(average())
+    }
 }
 
 // examples of methods
@@ -132,4 +140,9 @@ fun printInfo(data: Map<String, List<Int>>) {
 // high level method
 fun modifyString(string: String, modify: (String) -> String) : String {
     return modify(string)
+}
+
+// extensions
+inline fun<T> myWith(obj: T, operation: T.() -> Unit) {
+    obj.operation()
 }
